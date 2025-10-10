@@ -8,6 +8,12 @@ description: |
 grade: stable
 confinement: strict
 
+plug:
+  socket-provider:
+    interface: content
+    default-provider: deepseek-r1
+    target: $SNAP_DATA/share/connection.json
+
 parts:
   src:
     plugin: nil
