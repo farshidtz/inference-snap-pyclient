@@ -1,0 +1,13 @@
+name: pyclient
+base: core24
+version: '0.1'
+summary: Single-line elevator pitch for your amazing snap
+description: |
+  This is my-snap's description.
+
+grade: stable
+confinement: strict
+
+parts:
+  src:
+    plugin: nil
