@@ -8,12 +8,22 @@ description: |
 grade: stable
 confinement: strict
 
-plug:
+plugs:
   socket-provider:
     interface: content
-    default-provider: deepseek-r1
+    ## Build fails when uncommented since
+    ## deepseek-r1 isn't avaible on latest/stable yet
+    # default-provider: deepseek-r1
     target: $SNAP_DATA/share/connection.json
 
 parts:
   src:
-    plugin: nil
+    source: .
+    plugin: python
+    python-packages:
+      - openai==2.3.0
+
+apps:
+  pyclient:
+    command: bin/chat
+
