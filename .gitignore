@@ -1,0 +1,4 @@
+# Snap files
+*.snap
+*.comp
+squashfs-root
