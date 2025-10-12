@@ -1,8 +1,22 @@
 from openai import OpenAI
+import json
+import os
 
 
 def main():
-    url = "http://localhost:8080/v1"
+    data = {}
+    path = ""
+    try:
+        path = os.environ["SNAP_DATA"]
+        print(f"SNAP_DATA found: {path}")
+    except KeyError:
+        print("Error: not running in a snap environment.")
+    with open(path + "/share/connection.json") as f:
+        data = json.load(f)
+
+    print(f"json data: {data}")
+    url = data["endpoints"]["openai"]
+    print(f"Using OpenAI endpoint: {url}")
     client = OpenAI(base_url=url, api_key="dummy_key")
     response = client.chat.completions.create(
         model="",
@@ -14,6 +28,7 @@ def main():
             },
         ],
     )
+    print("Response received")
 
     print(response.choices[0].message.content)
 

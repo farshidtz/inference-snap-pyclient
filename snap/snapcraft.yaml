@@ -14,7 +14,7 @@ plugs:
     ## Build fails when uncommented since
     ## deepseek-r1 isn't avaible on latest/stable yet
     # default-provider: deepseek-r1
-    target: $SNAP_DATA/share/connection.json
+    target: $SNAP_DATA
 
 parts:
   src:
@@ -26,4 +26,6 @@ parts:
 apps:
   pyclient:
     command: bin/chat
+    plugs:
+      - network
 
