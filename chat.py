@@ -15,7 +15,7 @@ def main():
         data = json.load(f)
 
     print(f"json data: {data}")
-    url = data["endpoints"]["openai"]
+    url = data["openai"]
     print(f"Using OpenAI endpoint: {url}")
     client = OpenAI(base_url=url, api_key="dummy_key")
     response = client.chat.completions.create(
