@@ -14,6 +14,7 @@ def main():
     except KeyError:
         print("Error: not running in a snap environment.")
         sys.exit(1)
+
     jsonPath = path + "/share/connection.json"
     try:
         with open(jsonPath) as f:
