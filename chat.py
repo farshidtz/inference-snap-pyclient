@@ -12,7 +12,7 @@ def main():
         print(f"SNAP_DATA found: {path}")
     except KeyError:
         print("Error: not running in a snap environment.")
-        jsonPath = path + "/share/connection.json"
+    jsonPath = path + "/share/connection.json"
     try:
         with open(jsonPath) as f:
             data = json.load(f)
