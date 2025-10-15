@@ -6,13 +6,18 @@ import os
 def main():
     data = {}
     path = ""
+    jsonPath = ""
     try:
         path = os.environ["SNAP_DATA"]
         print(f"SNAP_DATA found: {path}")
     except KeyError:
         print("Error: not running in a snap environment.")
-    with open(path + "/share/connection.json") as f:
-        data = json.load(f)
+        jsonPath = path + "/share/connection.json"
+    try:
+        with open(jsonPath) as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: connection.json file not found in {jsonPath}")
 
     print(f"json data: {data}")
     url = data["openai"]
