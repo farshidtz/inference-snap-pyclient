@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build snap
         uses: snapcore/action-build@v1.3.0
         id: snapcraft
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ env.SNAP_AMD64 }}
           path: ${{ steps.snapcraft.outputs.snap }}
