@@ -27,7 +27,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4.6.2
         with:
-          name: ${{ env.SNAP_AMD64 }}
+          name: ${{ steps.snapcraft.outputs.snap }}
           path: ${{ steps.snapcraft.outputs.snap }}
           if-no-files-found: error
 
