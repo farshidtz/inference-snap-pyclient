@@ -15,7 +15,7 @@ def main():
         print("Error: not running in a snap environment.")
         sys.exit(1)
 
-    jsonPath = path + "/share/connection.json"
+    jsonPath = path + "/share/endpoints/endpoints.json"
     try:
         with open(jsonPath) as f:
             data = json.load(f)

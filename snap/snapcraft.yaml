@@ -9,7 +9,7 @@ grade: stable
 confinement: strict
 
 plugs:
-  socket-provider:
+  inference-endpoints:
     interface: content
     ## Build fails when uncommented since
     ## deepseek-r1 isn't avaible on latest/stable yet
