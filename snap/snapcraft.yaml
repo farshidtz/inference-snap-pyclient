@@ -9,6 +9,7 @@ grade: stable
 confinement: strict
 
 plugs:
+  # consuming the endpoints.json using the content-interface
   inference-endpoints:
     interface: content
     ## Build fails when uncommented since
