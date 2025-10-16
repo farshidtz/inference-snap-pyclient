@@ -1,0 +1,29 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    outputs:
+      snap: ${{ steps.snapcraft.outputs.snap }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build snap
+        uses: snapcore/action-build@v1.3.0
+        id: snapcraft
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.SNAP_AMD64 }}
+          path: ${{ steps.snapcraft.outputs.snap }}
+          if-no-files-found: error
+
