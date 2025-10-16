@@ -15,7 +15,7 @@ plugs:
     ## Build fails when uncommented since
     ## deepseek-r1 isn't avaible on latest/stable yet
     # default-provider: deepseek-r1
-    target: $SNAP_DATA
+    target: $SNAP_DATA/share
 
 parts:
   src:
