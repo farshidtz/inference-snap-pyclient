@@ -2,3 +2,4 @@
 # Pyclient - A Python client for OpenAI compatible servers
 
 A simple Python client packaged as a snap.
+This snap is aimed to be able to connect as a consumer of an [inference snap](https://documentation.ubuntu.com/inference-snaps/).
