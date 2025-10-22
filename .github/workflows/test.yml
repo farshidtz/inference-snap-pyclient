@@ -41,17 +41,17 @@ jobs:
         ARCH:
           - amd64
           - riscv64
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v5
-          # This is essential for git restore-mtime to work correctly.
-          with:
-            fetch-depth: 0
-        - name: Run integration tests
-          uses: zyga/image-garden-action@v0
-          env:
-            ARCH: ${{ matrix.ARCH }}
-          with:
-            snapd-channel: latest/edge
-            image-garden-channel: latest/edge
-            garden-system: ${{ matrix.garden-system }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        # This is essential for git restore-mtime to work correctly.
+        with:
+          fetch-depth: 0
+      - name: Run integration tests
+        uses: zyga/image-garden-action@v0
+        env:
+          ARCH: ${{ matrix.ARCH }}
+        with:
+          snapd-channel: latest/edge
+          image-garden-channel: latest/edge
+          garden-system: ${{ matrix.garden-system }}
