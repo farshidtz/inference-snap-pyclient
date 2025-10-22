@@ -1,0 +1,28 @@
+project: pyclient
+path: /root/demo
+exclude:
+  - .image-garden/
+  - .git
+backends:
+  garden:
+    type: adhoc
+    allocate: |
+        if [ -n "${SPREAD_HOST_PATH-}" ]; then
+            PATH="$SPREAD_HOST_PATH"
+        fi
+        exec image-garden allocate "$SPREAD_SYSTEM"."$(uname -m)"
+    discard: |
+        if [ -n "${SPREAD_HOST_PATH-}" ]; then
+            PATH="$SPREAD_HOST_PATH"
+        fi
+        exec image-garden discard "$SPREAD_SYSTEM_ADDRESS"
+    systems:
+      - debian-cloud-12:
+          username: root
+          password: root
+      - fedora-cloud-42:
+          username: root
+          password: root
+suites:
+  tests/:
+    summary: Integration test

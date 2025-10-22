@@ -1,0 +1,4 @@
+summary: hello-world
+execute: |
+    echo "$(uname -a)"
+    echo "Hello world"
