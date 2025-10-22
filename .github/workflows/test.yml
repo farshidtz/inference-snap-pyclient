@@ -31,3 +31,27 @@ jobs:
           path: ${{ steps.snapcraft.outputs.snap }}
           if-no-files-found: error
 
+  integration-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        garden-system:
+          - debian-cloud-12
+          - fedora-cloud-42
+        ARCH:
+          - amd64
+          - riscv64
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v5
+          # This is essential for git restore-mtime to work correctly.
+          with:
+            fetch-depth: 0
+        - name: Run integration tests
+          uses: zyga/image-garden-action@v0
+          env:
+            ARCH: ${{ matrix.ARCH }}
+          with:
+            snapd-channel: latest/edge
+            image-garden-channel: latest/edge
+            garden-system: ${{ matrix.garden-system }}
