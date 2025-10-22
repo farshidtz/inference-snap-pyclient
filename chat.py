@@ -27,7 +27,8 @@ def main():
             f"Error: connection.json file not found in {jsonPath}, using default endpoint.",
             file=sys.stderr,
         )
-        sys.exit(1)
+        print("Defaulting to localhost:8324 - DeepSeek-r1 snap api endpoint.")
+        url = "http://localhost:8324/v1"
 
     print(f"Using OpenAI endpoint: {url}")
     client = OpenAI(base_url=url, api_key="dummy_key")
