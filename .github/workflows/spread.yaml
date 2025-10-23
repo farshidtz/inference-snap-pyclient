@@ -9,6 +9,8 @@ jobs:
       strategy:
         matrix:
           garden-system:
+            - ubuntu-cloud-22.04
+            - ubuntu-cloud-24.04
             - debian-cloud-12
             - fedora-cloud-42
           ARCH:
