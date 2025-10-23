@@ -14,6 +14,7 @@ jobs:
             - ubuntu-cloud-24.04
             - ubuntu-cloud-25.04
             - ubuntu-cloud-25.10
+            - archlinux-cloud
             - debian-cloud-12
             - fedora-cloud-42
       steps:
