@@ -14,8 +14,6 @@ jobs:
             - ubuntu-cloud-24.04
             - debian-cloud-12
             - fedora-cloud-42
-          ARCH:
-            - x86_64
       steps:
         - name: Checkout code
           uses: actions/checkout@v5
@@ -24,8 +22,6 @@ jobs:
             fetch-depth: 0
         - name: Run integration tests
           uses: zyga/image-garden-action@v0
-          env:
-            ARCH: ${{ matrix.ARCH }}
           with:
             snapd-channel: latest/edge
             image-garden-channel: latest/edge
