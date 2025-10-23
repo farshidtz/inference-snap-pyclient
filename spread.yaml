@@ -29,6 +29,15 @@ backends:
       - ubuntu-cloud-25.10:
             username: ubuntu
             password: ubuntu
+      - ubuntu-core-20:
+            username: ubuntu
+            password: ubuntu
+      - ubuntu-core-22:
+            username: ubuntu
+            password: ubuntu
+      - ubuntu-core-24:
+            username: ubuntu
+            password: ubuntu
       - archlinux-cloud:
             username: archlinux
             password: archlinux
