@@ -1,3 +1,8 @@
+<!--
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: Zygmunt Krynicki
+-->
+
 # Image Garden State Directory
 
 This directory is used by `image-garden` to store large temporary files.
