@@ -2,3 +2,6 @@
 *.snap
 *.comp
 squashfs-root
+
+# image-garden + spread temp files
+.image-garden/*
