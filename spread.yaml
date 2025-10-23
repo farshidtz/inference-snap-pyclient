@@ -1,5 +1,5 @@
 project: pyclient
-path: /root/demo
+path: $GITHUB_WORKSPACE
 exclude:
   - .image-garden/
   - .git
