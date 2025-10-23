@@ -12,6 +12,8 @@ jobs:
           garden-system:
             - ubuntu-cloud-22.04
             - ubuntu-cloud-24.04
+            - ubuntu-cloud-25.04
+            - ubuntu-cloud-25.10
             - debian-cloud-12
             - fedora-cloud-42
       steps:
