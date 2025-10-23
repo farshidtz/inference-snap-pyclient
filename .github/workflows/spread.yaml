@@ -4,30 +4,26 @@ on:
         branches: ["main"]
     pull_request:
 jobs:
-    debian-12:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v5
-              # This is essential for git restore-mtime to work correctly.
-              with:
-                fetch-depth: 0
-            - name: Run integration tests
-              uses: zyga/image-garden-action@v0
-              with:
-                snapd-channel: latest/edge
-                image-garden-channel: latest/edge
-                garden-system: debian-cloud-12
-    fedora-42:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v5
-              with:
-                fetch-depth: 0
-            - name: Run integration tests
-              uses: zyga/image-garden-action@v0
-              with:
-                snapd-channel: latest/edge
-                image-garden-channel: latest/edge
-                garden-system: fedora-cloud-42
+    integration-tests:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          garden-system:
+            - debian-cloud-12
+            - fedora-cloud-42
+          ARCH:
+            - x86_64
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v5
+          # This is essential for git restore-mtime to work correctly.
+          with:
+            fetch-depth: 0
+        - name: Run integration tests
+          uses: zyga/image-garden-action@v0
+          env:
+            ARCH: ${{ matrix.ARCH }}
+          with:
+            snapd-channel: latest/edge
+            image-garden-channel: latest/edge
+            garden-system: ${{ matrix.garden-system }}
