@@ -5,7 +5,6 @@ on:
     pull_request:
 jobs:
     integration-tests:
-      runs-on: ubuntu-latest
       strategy:
         fail-fast: false
         matrix:
@@ -20,6 +19,10 @@ jobs:
             - archlinux-cloud
             - debian-cloud-12
             - fedora-cloud-42
+          arch:
+            - ubuntu-latest # x86_64 machine
+            - ubuntu-24.04-arm # aarch64 machine
+      runs-on: ${{ matrix.arch }}
       steps:
         - name: Checkout code
           uses: actions/checkout@v5
