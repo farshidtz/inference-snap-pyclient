@@ -28,6 +28,16 @@ jobs:
           exclude:
             - garden-system: ubuntu-cloud-22.04
               arch: riscv64
+            - garden-system: ubuntu-core-20
+              arch: riscv64
+            - garden-system: ubuntu-core-22
+              arch: riscv64
+            - garden-system: ubuntu-core-24
+              arch: riscv64
+            - garden-system: ubuntu-core-20
+              arch: aarch64
+            - garden-system: debian-cloud-12
+              arch: riscv64
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
