@@ -21,6 +21,13 @@ jobs:
             - ubuntu-core-24
             - debian-cloud-12
             - fedora-cloud-42
+          arch:
+            - x86_64
+            - aarch64
+            - riscv64
+          exclude:
+            - garden-system: ubuntu-cloud-22.04
+              arch: riscv64
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
@@ -30,6 +37,8 @@ jobs:
             fetch-depth: 0
         - name: Run integration tests
           uses: zyga/image-garden-action@v0
+          env:
+            ARCH: ${{ matrix.arch }}
           with:
             snapd-channel: latest/edge
             image-garden-channel: latest/edge
