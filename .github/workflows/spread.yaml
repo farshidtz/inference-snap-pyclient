@@ -19,7 +19,6 @@ jobs:
             - ubuntu-core-20
             - ubuntu-core-22
             - ubuntu-core-24
-            - archlinux-cloud
             - debian-cloud-12
             - fedora-cloud-42
           arch:
