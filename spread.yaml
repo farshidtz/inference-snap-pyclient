@@ -14,7 +14,7 @@ backends:
             export QEMU_MEM_OPTION="-m 1024"
 
             ARCH="${ARCH:-$(uname -m)}"
-            if OUT="$(image-garden allocate "${SPREAD_SYSTEM/-plus-/+}"."$ARCH"; then
+            if OUT="$(image-garden allocate "${SPREAD_SYSTEM/-plus-/+}"."$ARCH")"; then
                   if [ "$ARCH" != "$(uname -m)" ]; then
                         # Spread has a fixed, 5-minute timeout for ssh to become ready.
                         # When emulating across architectures this may not be sufficient
