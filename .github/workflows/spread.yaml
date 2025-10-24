@@ -21,10 +21,7 @@ jobs:
             - ubuntu-core-24
             - debian-cloud-12
             - fedora-cloud-42
-          arch:
-            - ubuntu-latest # x86_64 machine
-            # - ubuntu-24.04-arm # aarch64 machine
-      runs-on: ${{ matrix.arch }}
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout code
           uses: actions/checkout@v5
