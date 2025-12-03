@@ -1,7 +1,8 @@
-from openai import OpenAI
 import json
 import os
 import sys
+from openai import OpenAI
+from openai import APIConnectionError
 
 
 def main():
@@ -11,38 +12,41 @@ def main():
     url = ""
     try:
         path = os.environ["SNAP_DATA"]
-        print(f"SNAP_DATA found: {path}")
     except KeyError:
         print("Error: not running in a snap environment.", file=sys.stderr)
         sys.exit(1)
 
-    jsonPath = path + "/share/endpoints/endpoints.json"
+    jsonPath = path + "/inference-snap/status/status.json"
     try:
         with open(jsonPath) as f:
             data = json.load(f)
-        print(f"json data: {data}")
-        url = data["openai"]
+        print(f"Status: {data}")
+        url = data["endpoints"]["openai"]
     except FileNotFoundError:
         print(
-            f"Error: connection.json file not found in {jsonPath}, using default endpoint.",
+            f"Error: status file not found at {jsonPath}",
             file=sys.stderr,
         )
-        print("Defaulting to localhost:8324 - DeepSeek-r1 snap api endpoint.")
-        url = "http://localhost:8324/v1"
-
+        sys.exit(1)
+        
     print(f"Using OpenAI endpoint: {url}")
-    client = OpenAI(base_url=url, api_key="dummy_key")
-    response = client.chat.completions.create(
-        model="",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {
-                "role": "user",
-                "content": "Write a one-sentence bedtime story about a unicorn.",
-            },
-        ],
-    )
-    print("Response received")
+    try:
+        client = OpenAI(base_url=url, api_key="dummy_key")
+        response = client.chat.completions.create(
+            model="",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {
+                    "role": "user",
+                    "content": "Write a one-sentence bedtime story about a unicorn.",
+                },
+            ],
+        )
+        print("Response received")
+    except APIConnectionError as e:
+        print(f"Error: unable to connect to {url}", file=sys.stderr)
+        print(f"Details: {e}", file=sys.stderr)
+        sys.exit(1)
 
     print(response.choices[0].message.content)
 

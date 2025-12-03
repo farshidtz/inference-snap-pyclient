@@ -9,10 +9,12 @@ grade: stable
 confinement: strict
 
 plugs:
-  # consuming the endpoints.json using the content-interface
-  inference-endpoints:
+  # Consume an inference snap's status.json
+  inference-snap-status:
     interface: content
-    target: $SNAP_DATA/share
+    target: $SNAP_DATA/inference-snap
+    # This depends on gemma3 released to latest/stable
+    # default-provider: gemma3
 
 parts:
   src:
