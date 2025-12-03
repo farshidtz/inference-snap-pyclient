@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Lincoln Wallace
-# SPDX-License-Identifier: Apache-2.0
-
 from openai import OpenAI
 import json
 import os
