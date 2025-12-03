@@ -30,10 +30,18 @@ def main():
         sys.exit(1)
         
     print(f"Using OpenAI endpoint: {url}")
+
     try:
         client = OpenAI(base_url=url, api_key="dummy_key")
+        
+        # Some servers require model names in the requests, query from the /models endpoint
+        models = client.models.list()
+        # There may be multiple models; pick the first one
+        model_name = models.data[0].id if models.data else ""
+        print(f"Using model: {model_name}")
+        
         response = client.chat.completions.create(
-            model="",
+            model=model_name,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {
