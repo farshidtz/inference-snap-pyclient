@@ -1,7 +1,0 @@
-# SPDX-License-Identifier: Apache-2.0
-# SPDX-FileCopyrightText: Zygmunt Krynicki
-summary: Just run uname
-artifacts:
-    - uname.txt
-execute: |
-    uname -a | tee uname.txt

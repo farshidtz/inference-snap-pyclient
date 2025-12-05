@@ -1,7 +1,0 @@
-# SPDX-FileCopyrightText: 2025 Lincoln Wallace
-# SPDX-License-Identifier: Apache-2.0
-
-summary: hello-world
-execute: |
-    echo "$(uname -a)"
-    echo "Hello world"

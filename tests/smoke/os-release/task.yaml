@@ -1,8 +1,0 @@
-# SPDX-License-Identifier: Apache-2.0
-# SPDX-FileCopyrightText: Zygmunt Krynicki
-summary: Look for /etc/os-release
-artifacts:
-    - os-release
-execute: |
-    test -f /etc/os-release
-    cp /etc/os-release .
